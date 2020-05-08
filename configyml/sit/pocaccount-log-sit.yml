@@ -1,9 +1,0 @@
-logging:
-  config: classpath:logback.xml #log日志配置
-  path: /data/logs/${spring.application.name} #日志存放文件夹
-  level:
-    root: INFO
-    org.springframework.web.servlet.DispatcherServlet: INFO
-    org.springframework.cloud.sleuth: INFO
-
-

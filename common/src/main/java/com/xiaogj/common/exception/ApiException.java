@@ -6,8 +6,8 @@ import com.xiaogj.common.entity.IErrorCode;
 /**
  * @ClassName: ApiException
  * @Description: 自定义API异常
- * @author: liupeng
- * @date: 2020/5/7 18:14
+ * @Author: liupeng
+ * @Date: 2020/5/7 18:14
  **/
 public class ApiException extends RuntimeException {
     private IErrorCode errorCode;

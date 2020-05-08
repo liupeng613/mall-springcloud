@@ -8,8 +8,8 @@ import java.util.List;
 /**
  * @ClassName: CommonPage<T>
  * @Description: 分页数据封装类
- * @author: liupeng
- * @date: 2020/5/7 18:14
+ * @Author: liupeng
+ * @Date: 2020/5/7 18:14
  **/
 public class CommonPage<T> {
     private Integer pageNum;

@@ -3,8 +3,8 @@ package com.xiaogj.common.entity;
 /**
  * @ClassName: CommonResult<T>
  * @Description: 通用返回对象
- * @author: liupeng
- * @date: 2020/5/7 19:14
+ * @Author: liupeng
+ * @Date: 2020/5/7 19:14
  **/
 
 public class CommonResult<T> {
