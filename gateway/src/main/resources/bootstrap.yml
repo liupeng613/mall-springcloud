@@ -1,0 +1,14 @@
+spring:
+  cloud:
+    config:
+      name: gateway # 定义要读取的资源文件的名称
+      profile: dev # 定义profile的 名称
+      label: master # 定义配置文件所在的分支
+      discovery:
+        enabled: true   # 通过配置中心加载配置文件
+        service-id: configserver   # 在eureka之中注册的服务ID
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://xiaogj:xiaogj@localhost:8761/eureka

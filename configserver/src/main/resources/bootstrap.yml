@@ -1,0 +1,7 @@
+encrypt:
+  key: xiaogj2020key
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh

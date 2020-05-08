@@ -1,0 +1,42 @@
+server:
+  port: 8003
+spring:
+  application:
+    name:  live
+  sleuth:
+    sampler:
+      probability: 1  #采样频率
+  zipkin:
+    base-url: http://172.16.1.183:9411/
+    service:
+      name: live
+    sender:
+      type: web
+eureka:
+  client:
+    service-url:
+      defaultZone: http://xiaogj:xiaogj@127.0.0.1:8761/eureka
+  instance:
+    instance-id: live
+    prefer-ip-address: true
+feign:
+  hystrix:
+    enabled: true
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 10000
+logging:
+  config: classpath:logback.xml
+  path: /data/logs/${spring.application.name}
+  level:
+    root: INFO
+    org.springframework.web.servlet.DispatcherServlet: DEBUG
+    org.springframework.cloud.sleuth: DEBUG
+configTest: zxxxxx
+#积分规则
+point:
+  rules:
+    StudentLogin: 1  #学员登陆成功加10分
+    TeacherLogin: 2  #老师登陆成功加10分
+    StudentAdd: 3   #老师新增学员成功加5分
+    StudentDel: -4   #老师删除学员减5分

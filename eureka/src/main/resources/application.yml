@@ -1,0 +1,19 @@
+server:
+  port: 8761
+eureka:
+  server:
+    eviction-interval-timer-in-ms: 1000
+    enable-self-preservation: false
+  client:
+    fetch-registry: false
+    register-with-eureka: false
+    service-url:
+      defaultZone: http://xiaogj:xiaogj@local056.xiaogj.com:8761/eureka
+  instance:
+    prefer-ip-address: true
+
+spring:
+  security:
+    user:
+      name: xiaogj
+      password: xiaogj

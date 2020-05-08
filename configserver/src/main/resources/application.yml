@@ -1,0 +1,30 @@
+encrypt:
+  key: xiaogj2020key
+spring:
+  application:
+    name: configserver
+  cloud:
+    config:
+      server:
+        git:
+          uri: http://local046.xiaogj.com:7002/szxiaogj/configyml.git
+          username: '{cipher}0d4cdb8d168b0d51a2f57ae790626830fff3b86ef3a36ccded30c0b5b5bc9adb'
+          password: '{cipher}6be70f69e5dc04669efd1b2e7d699f2b8580a4dfd588557763d49c698839b058'
+          search-paths: dev,sit,pro
+  rabbitmq:
+    host: local059.xiaogj.com
+    port: 5672
+    username: admin
+    password: xiaogj2020
+    virtual-host: xiaogj_rabbitmq_host
+server:
+  port: 13088
+eureka:
+  instance:
+    instance-id: configserver
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://${eureka.userName}:${eureka.pwd}@local056.xiaogj.com:8761/eureka
+  userName: '{cipher}6a70a9eac256d50fdab3ad01e278cff18677605f238f49010687fa69f7a57c01'
+  pwd: '{cipher}6a70a9eac256d50fdab3ad01e278cff18677605f238f49010687fa69f7a57c01'

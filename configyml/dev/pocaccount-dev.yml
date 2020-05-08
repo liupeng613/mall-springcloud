@@ -1,0 +1,64 @@
+server:
+ port: 8005
+mybatis:
+ mapper-locations: # 所有的mapper映射文件
+ - classpath:mapping/*.xml
+spring:
+ profiles:
+   active: jdbc,log
+ application:
+   name: pocaccount
+   sleuth:
+     sampler:
+       probability: 1 #sleth采样 0.1表示采样10% 1表示全部采样
+   zipkin:
+     base-url: http://localhost:9411/  #整合zipkin
+     service:
+       name: pocaccount  #zipkin中显示的名称
+     sender:
+       type: web
+ cloud:
+   stream:
+     rabbit:
+       bindings:
+         xgj-point-topic:
+           consumer:
+             consumer:
+               exchangeDurable: true
+               exclusive: false
+               anonymousGroupPrefix: pocpoint.
+               exchangeAutoDelete: false
+               durableSubscription: true
+               acknowledge-mode: MANUAL
+     binders:
+       default:
+         type: rabbit
+         environment: #配置rabbimq连接环境
+           spring:
+             rabbitmq:
+               host: app059.xiaogj.com
+               port: 5672
+               username: admin
+               password: xiaogj2020
+               virtual-host: xiaogj_rabbitmq_host
+     bindings:
+      xgj-point-topic:
+       destination: xgj-point-topic  #exchange名称，交换模式默认是topic
+       content-type: application/json
+       group: pocpoint
+eureka:
+  client:
+    register-with-eureka: true #是否注册要eurekyagetUserPoint?
+    service-url:
+      defaultZone: http://xiaogj:xiaogj@127.0.0.1:8761/eureka #erueka地址
+  instance:
+    instance-id: pocaccount  #eureka显示的实例名称
+    prefer-ip-address: true #ip注册
+feign:
+  hystrix:
+    enabled: true
+swagger:
+  enable: true
+
+
+

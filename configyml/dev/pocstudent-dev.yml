@@ -1,0 +1,31 @@
+server:
+ port: 8002
+mybatis:
+ mapper-locations: # 所有的mapper映射文件
+ - classpath:mapping/*.xml
+spring:
+ profiles:
+   active: jdbc,log
+ application:
+   name: pocstudent
+   sleuth:
+     sampler:
+       probability: 1 #sleth采样 0.1表示采样10% 1表示全部采样
+   zipkin:
+     base-url: http://localhost:9411/  #整合zipkin
+     service:
+       name: pocstudent  #zipkin中显示的名称
+     sender:
+       type: web
+eureka:
+  client:
+    register-with-eureka: true #是否注册要eureka
+    service-url:
+      defaultZone: http://xiaogj:xiaogj@127.0.0.1:8761/eureka #erueka地址
+  instance:
+    instance-id: pocstudent  #eureka显示的实例名称
+    prefer-ip-address: true #ip注册
+swagger:
+  enable: true
+
+

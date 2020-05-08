@@ -1,0 +1,35 @@
+server:
+  port: 80
+eureka:
+  client:
+    service-url:
+      defaultZone: http://xiaogj:xiaogj@127.0.0.1:8761/eureka
+  instance:
+    instance-id: gateway
+    prefer-ip-address: true
+spring:
+  application:
+    name:  gateway
+  sleuth:
+    sampler:
+      probability: 1  #采样频率
+  zipkin:
+    base-url: http://127.0.0.1:9411/
+    service:
+      name: live
+    sender:
+      type: web
+logging:
+  config: classpath:logback.xml
+  path: /data/logs/${spring.application.name}
+  level:
+    root: INFO
+    org.springframework.web.servlet.DispatcherServlet: DEBUG
+    org.springframework.cloud.sleuth: DEBUG
+zuul:
+  host:
+    connect-timeout-millis: 15000 #HTTP连接超时要比Hystrix的大
+    socket-timeout-millis: 60000   #socket超时
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 10000
